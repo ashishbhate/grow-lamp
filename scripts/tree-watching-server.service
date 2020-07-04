@@ -1,0 +1,11 @@
+[Unit]
+Description=Tree Watching Server
+After=network-online.target
+
+[Service]
+User=dietpi
+Group=dietpi
+ExecStart=/home/dietpi/Code/lamp/server
+
+[Install]
+WantedBy=multi-user.target

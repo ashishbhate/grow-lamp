@@ -1,0 +1,11 @@
+[Unit]
+Description=Tree Watching Set By Schedule
+After=network.target
+
+[Service]
+User=dietpi
+Group=dietpi
+ExecStart=/home/dietpi/Code/lamp/lamp.py set-by-schedule
+
+[Install]
+WantedBy=multi-user.target

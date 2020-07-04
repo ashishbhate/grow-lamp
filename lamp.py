@@ -4,9 +4,6 @@ import datetime
 import sys
 from time import sleep, localtime
 
-TIME_ON = datetime.time(9) 
-TIME_OFF = datetime.time(19) 
-
 def turn_on(pin):
     GPIO.output(pin, GPIO.LOW)       # set port/pin value to 0/GPIO.LOW/False  
 
@@ -25,21 +22,23 @@ def set_by_schedule(pin):
     turn_off(pin)
     print("turned off")
 
+TIME_ON = datetime.time(9) 
+TIME_OFF = datetime.time(19) 
+PIN = 11
+
 GPIO.setwarnings(False) # Ignore warning for now
 GPIO.setmode(GPIO.BOARD) # Use physical pin numbering
-
-pin = 11
-GPIO.setup(pin, GPIO.OUT) # set a port/pin as an output   
+GPIO.setup(PIN, GPIO.OUT) # set a port/pin as an output   
 
 if len(sys.argv) < 2:
-    print("on" if is_on(pin) else "off")
+    print("on" if is_on(PIN) else "off")
     sys.exit(0)
 
 if sys.argv[1] == "on":
-    turn_on(pin)
+    turn_on(PIN)
 elif sys.argv[1] == "off": 
-    turn_off(pin)
+    turn_off(PIN)
 elif sys.argv[1] == "set-by-schedule": 
-    set_by_schedule(pin)
+    set_by_schedule(PIN)
 else:
-    print("on" if is_on(pin) else "off")
+    print("on" if is_on(PIN) else "off")
